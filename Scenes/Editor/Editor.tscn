@@ -1,0 +1,27 @@
+[gd_scene load_steps=6 format=3 uid="uid://lltg4jfihoew"]
+
+[ext_resource type="Script" path="res://Scenes/Editor/Editor.gd" id="1_s8e0s"]
+[ext_resource type="PackedScene" uid="uid://bdd081fq1xikt" path="res://Components/Camera/Camera.tscn" id="2_tqaa3"]
+[ext_resource type="Texture2D" uid="uid://cwqbr7c6s5yy4" path="res://icon.svg" id="3_oa8tj"]
+[ext_resource type="PackedScene" uid="uid://b5why34vmnua7" path="res://Components/Grid/Grid.tscn" id="3_pised"]
+[ext_resource type="PackedScene" uid="uid://cpfuow0xwosx2" path="res://Components/Gate/Gate.tscn" id="5_aud1p"]
+
+[node name="Editor" type="Node2D"]
+script = ExtResource("1_s8e0s")
+
+[node name="Camera" parent="." instance=ExtResource("2_tqaa3")]
+
+[node name="Grid" parent="." instance=ExtResource("3_pised")]
+
+[node name="Icon" type="Sprite2D" parent="."]
+position = Vector2(576, 324)
+scale = Vector2(0.781, 0.781)
+texture = ExtResource("3_oa8tj")
+
+[node name="Gate" parent="." instance=ExtResource("5_aud1p")]
+offset_left = 526.0
+offset_top = 274.0
+offset_right = 726.0
+offset_bottom = 374.0
+
+[connection signal="update" from="Camera" to="Grid" method="_on_camera_update"]

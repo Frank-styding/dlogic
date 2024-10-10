@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://lltg4jfihoew"]
+
+[ext_resource type="Script" path="res://Scenes/Editor/Camera.gd" id="1_7h5yh"]
+[ext_resource type="Script" path="res://Scenes/Editor/Editor.gd" id="1_s8e0s"]
+[ext_resource type="Script" path="res://Scenes/Editor/Grid.gd" id="2_5x33m"]
+[ext_resource type="Texture2D" uid="uid://cwqbr7c6s5yy4" path="res://icon.svg" id="3_oa8tj"]
+
+[node name="Editor" type="Node2D"]
+script = ExtResource("1_s8e0s")
+
+[node name="Camera" type="Camera2D" parent="."]
+position = Vector2(577, 320)
+script = ExtResource("1_7h5yh")
+
+[node name="Grid" type="Node2D" parent="."]
+position = Vector2(1, 1)
+script = ExtResource("2_5x33m")
+
+[node name="Icon" type="Sprite2D" parent="."]
+position = Vector2(576, 324)
+scale = Vector2(0.391, 0.391)
+texture = ExtResource("3_oa8tj")
+
+[connection signal="update" from="Camera" to="Grid" method="_on_camera_update"]
