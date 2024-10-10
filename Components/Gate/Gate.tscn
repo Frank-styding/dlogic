@@ -1,7 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://cpfuow0xwosx2"]
+[gd_scene load_steps=3 format=3 uid="uid://cpfuow0xwosx2"]
 
 [ext_resource type="Script" path="res://Components/Gate/Gate.gd" id="1_mgbci"]
-[ext_resource type="PackedScene" uid="uid://dgebcrstkcbmj" path="res://Components/Gate/Connection.tscn" id="2_fgggy"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tfs0u"]
 bg_color = Color(0.0434614, 0.0480908, 0.0543672, 1)
@@ -10,26 +9,12 @@ corner_radius_top_right = 4
 corner_radius_bottom_right = 4
 corner_radius_bottom_left = 4
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5vfmn"]
-bg_color = Color(0.243758, 0.594333, 0.609953, 1)
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 5
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a05hd"]
-bg_color = Color(0.243758, 0.594333, 0.609953, 1)
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 5
-
 [node name="Gate" type="Panel"]
 custom_minimum_size = Vector2(200, 100)
 offset_left = -25.0
 offset_top = -25.0
-offset_right = 175.0
-offset_bottom = 75.0
+offset_right = 275.0
+offset_bottom = 275.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_tfs0u")
 script = ExtResource("1_mgbci")
 
@@ -56,7 +41,6 @@ offset_top = -15.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_constants/margin_left = 25
-theme_override_constants/margin_right = 15
 
 [node name="BottomContainer" type="HBoxContainer" parent="BottomMargin"]
 layout_mode = 2
@@ -69,20 +53,10 @@ anchor_right = 1.0
 offset_bottom = 15.0
 grow_horizontal = 2
 theme_override_constants/margin_left = 25
-theme_override_constants/margin_right = 15
-theme_override_constants/margin_bottom = 1
 
 [node name="TopContainer" type="HBoxContainer" parent="TopMargin"]
 layout_mode = 2
 theme_override_constants/separation = 51
-
-[node name="Connection" parent="TopMargin/TopContainer" instance=ExtResource("2_fgggy")]
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_5vfmn")
-
-[node name="Connection2" parent="TopMargin/TopContainer" instance=ExtResource("2_fgggy")]
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_a05hd")
 
 [node name="RightMargin" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -94,7 +68,6 @@ offset_left = -15.0
 grow_horizontal = 0
 grow_vertical = 2
 theme_override_constants/margin_top = 25
-theme_override_constants/margin_bottom = 15
 
 [node name="RightContainer" type="VBoxContainer" parent="RightMargin"]
 layout_mode = 2
@@ -107,8 +80,12 @@ anchor_bottom = 1.0
 offset_right = 15.0
 grow_vertical = 2
 theme_override_constants/margin_top = 25
-theme_override_constants/margin_bottom = 15
 
 [node name="LeftContainer" type="VBoxContainer" parent="LeftMargin"]
 layout_mode = 2
 theme_override_constants/separation = 51
+
+[connection signal="mouse_entered" from="RightMargin/RightContainer/Connection" to="RightMargin/RightContainer/Connection" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="RightMargin/RightContainer/Connection" to="RightMargin/RightContainer/Connection" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="RightMargin/RightContainer/@Panel@452376" to="RightMargin/RightContainer/@Panel@452376" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="RightMargin/RightContainer/@Panel@452376" to="RightMargin/RightContainer/@Panel@452376" method="_on_mouse_exited"]

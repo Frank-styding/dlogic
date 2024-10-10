@@ -15,9 +15,10 @@ extends Panel
 @onready var left_container = $LeftMargin/LeftContainer as Container
 @onready var right_container = $RightMargin/RightContainer as Container
 
-#
-#@onready var conection = preload("res://Components/Gate/Connection.tscn") #panel
-#
+
+@onready var conection = preload("res://Components/Gate/Connection.tscn") #panel
+
+
 @export var connection_width: int = 49:
 	set(value):
 		connection_width = value
@@ -46,5 +47,55 @@ func update_container_separation():
 var cell_size = 100
 
 func _ready():
+	cell_size = GridData.cell_size
 	update_container_separation()
 	
+	from_data({
+		"dimention":Vector2i(3,3),
+		"connections":[
+			{
+				"name":"B",
+				"position":1
+			},
+			{
+				"name":"C",
+				"position":1
+			}
+		]
+	})
+	
+	
+func from_data(data:Dictionary):
+	set_dimention(data["dimention"])
+	create_conections(data["connections"])
+	
+
+
+var dimention = Vector2i(1,1)
+func set_dimention(n_dimention:Vector2i):
+	set_size(n_dimention * GridData.cell_size)
+	dimention = n_dimention
+	
+func get_container(_position:int):
+	if _position == 0:
+		return bottom_container
+	if _position == 1:
+		return right_container
+	if _position == 2:
+		return top_container
+	if _position == 3:
+		return left_container
+		
+func connection_click(data:Dictionary):
+	print(data["name"])
+
+func create_conections(data:Array):
+	for connection_data in data:
+		var _position = connection_data["position"] as int
+		var container = get_container(_position)
+		var n_conection = conection.instantiate() as GateConnection
+		n_conection.mouse_click.connect(connection_click)
+		n_conection.set_data(connection_data)
+		container.add_child(n_conection)
+
+
