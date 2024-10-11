@@ -27,18 +27,23 @@ var _min
 	set(value):
 		_max = value.x
 		_min = value.y
-		set_size(Vector2(_max,_min))
+		var _size = Vector2(_max,_min)
+		set_size(_size)
+		set("custom_minimum_size",_size)
 		real_size = value
 	
 
 var data:Dictionary
+var direction:int
 func _ready():
 	set_size(Vector2(_max,_min))
 	self.set("theme_override_styles/panel",box)
 	
 	if data:
 		set_connection_name(data["name"])
-		rotate_for_position(data["position"])
+		rotate_for_position(direction)
+	else:
+		visible = false
 
 func set_connection_name(_name:String):
 	if label == null:
@@ -49,23 +54,25 @@ func rotate_for_position(_position:int):
 	if not center_container:
 		return
 		
+	# update size of connection and text container
 	var _size;
 	if _position % 2 == 0:
 		_size = Vector2(_max,_min)
 	elif _position % 2 == 1:
-		_size = Vector2(_min,_max)		
-		
+		_size = Vector2(_min,_max)	
 	set("custom_minimum_size",_size)
 	set_size(_size)	
 	position = -size/2
 	center_container.set_size(Vector2(_max,_min))
 	
+	# rotate text
 	center_container.pivot_offset = size/2
 	center_container.rotation = -PI/2 * _position
 	center_container.pivot_offset = Vector2(0,0)
 	
-	var _diff = (center_container.size.y - _min)/2
 	
+	## fix_position of text
+	var _diff = (center_container.size.y - _min)/2
 	if _position == 0:
 		center_container.position=Vector2(0,-_diff)
 	elif _position == 1:
@@ -76,8 +83,10 @@ func rotate_for_position(_position:int):
 		center_container.position = Vector2(_min+_diff,0)
 
 
-func set_data(_data:Dictionary):
+func set_data(_direction:int,_data:Dictionary):
 	data = _data
+	direction = _direction
+	
 
 
 var mouse_inside = false

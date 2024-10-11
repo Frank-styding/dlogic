@@ -4,10 +4,10 @@
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tfs0u"]
 bg_color = Color(0.0434614, 0.0480908, 0.0543672, 1)
-corner_radius_top_left = 4
-corner_radius_top_right = 4
-corner_radius_bottom_right = 4
-corner_radius_bottom_left = 4
+corner_radius_top_left = 14
+corner_radius_top_right = 14
+corner_radius_bottom_right = 14
+corner_radius_bottom_left = 14
 
 [node name="Gate" type="Panel"]
 custom_minimum_size = Vector2(200, 100)
@@ -17,6 +17,7 @@ offset_right = 275.0
 offset_bottom = 275.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_tfs0u")
 script = ExtResource("1_mgbci")
+connection_width = 51
 
 [node name="Label" type="CenterContainer" parent="."]
 layout_mode = 1
@@ -40,11 +41,12 @@ anchor_bottom = 1.0
 offset_top = -15.0
 grow_horizontal = 2
 grow_vertical = 0
-theme_override_constants/margin_left = 25
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_bottom = 6
 
 [node name="BottomContainer" type="HBoxContainer" parent="BottomMargin"]
 layout_mode = 2
-theme_override_constants/separation = 51
+theme_override_constants/separation = 49
 
 [node name="TopMargin" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -52,11 +54,12 @@ anchors_preset = 10
 anchor_right = 1.0
 offset_bottom = 15.0
 grow_horizontal = 2
-theme_override_constants/margin_left = 25
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 5
 
 [node name="TopContainer" type="HBoxContainer" parent="TopMargin"]
 layout_mode = 2
-theme_override_constants/separation = 51
+theme_override_constants/separation = 49
 
 [node name="RightMargin" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -67,11 +70,12 @@ anchor_bottom = 1.0
 offset_left = -15.0
 grow_horizontal = 0
 grow_vertical = 2
-theme_override_constants/margin_top = 25
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 6
 
 [node name="RightContainer" type="VBoxContainer" parent="RightMargin"]
 layout_mode = 2
-theme_override_constants/separation = 51
+theme_override_constants/separation = 49
 
 [node name="LeftMargin" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -79,13 +83,14 @@ anchors_preset = 9
 anchor_bottom = 1.0
 offset_right = 15.0
 grow_vertical = 2
-theme_override_constants/margin_top = 25
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 24
 
 [node name="LeftContainer" type="VBoxContainer" parent="LeftMargin"]
 layout_mode = 2
-theme_override_constants/separation = 51
+theme_override_constants/separation = 49
 
 [connection signal="mouse_entered" from="RightMargin/RightContainer/Connection" to="RightMargin/RightContainer/Connection" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="RightMargin/RightContainer/Connection" to="RightMargin/RightContainer/Connection" method="_on_mouse_exited"]
-[connection signal="mouse_entered" from="RightMargin/RightContainer/@Panel@452376" to="RightMargin/RightContainer/@Panel@452376" method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="RightMargin/RightContainer/@Panel@452376" to="RightMargin/RightContainer/@Panel@452376" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="RightMargin/RightContainer/@Panel@109593" to="RightMargin/RightContainer/@Panel@109593" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="RightMargin/RightContainer/@Panel@109593" to="RightMargin/RightContainer/@Panel@109593" method="_on_mouse_exited"]

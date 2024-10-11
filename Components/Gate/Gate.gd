@@ -16,7 +16,8 @@ extends Panel
 @onready var right_container = $RightMargin/RightContainer as Container
 
 
-@onready var conection = preload("res://Components/Gate/Connection.tscn") #panel
+@onready var connection = preload("res://Components/Gate/Connection.tscn") #panel
+@onready var space = preload("res://Components/Gate/Space.tscn") #panel
 
 
 @export var connection_width: int = 49:
@@ -24,6 +25,28 @@ extends Panel
 		connection_width = value
 		update_container_separation()
 		
+
+## Variables
+var cell_size = 100
+var dimention = Vector2i(1,1)
+
+func _ready():
+	cell_size = GridData.cell_size
+	update_container_separation()
+	
+	from_data({
+		"dimention":Vector2i(3,3),
+		"connections":{
+			0:[{"name":"A"},{},{"name":"B"}],
+			1:[],
+			2:[],
+			3:[]
+		}
+	})
+	
+func connection_click(data:Dictionary):
+	print(data["name"])
+
 func update_container_separation():
 	if not (left_container and right_container and top_container and bottom_container):
 		return
@@ -44,38 +67,16 @@ func update_container_separation():
 	margin_top.set("theme_override_constants/margin_left",half_separation)
 	margin_bottom.set("theme_override_constants/margin_left",half_separation)
 
-var cell_size = 100
-
-func _ready():
-	cell_size = GridData.cell_size
-	update_container_separation()
-	
-	from_data({
-		"dimention":Vector2i(3,3),
-		"connections":[
-			{
-				"name":"B",
-				"position":1
-			},
-			{
-				"name":"C",
-				"position":1
-			}
-		]
-	})
-	
-	
 func from_data(data:Dictionary):
 	set_dimention(data["dimention"])
-	create_conections(data["connections"])
-	
+	create_connections(data["connections"])
 
-
-var dimention = Vector2i(1,1)
 func set_dimention(n_dimention:Vector2i):
 	set_size(n_dimention * GridData.cell_size)
 	dimention = n_dimention
-	
+	for child in top_container.get_children() + bottom_container.get_children() + left_container.get_children() + right_container.get_children():
+		child.queue_free()
+
 func get_container(_position:int):
 	if _position == 0:
 		return bottom_container
@@ -85,17 +86,17 @@ func get_container(_position:int):
 		return top_container
 	if _position == 3:
 		return left_container
-		
-func connection_click(data:Dictionary):
-	print(data["name"])
 
-func create_conections(data:Array):
-	for connection_data in data:
-		var _position = connection_data["position"] as int
-		var container = get_container(_position)
-		var n_conection = conection.instantiate() as GateConnection
-		n_conection.mouse_click.connect(connection_click)
-		n_conection.set_data(connection_data)
-		container.add_child(n_conection)
-
-
+func create_connections(data:Dictionary):
+	for i in range(4):
+		for connection_data in data[i]:
+			var container = get_container(i)
+			if connection_data.has("name"):
+				var n_connection = connection.instantiate() as GateConnection
+				n_connection.mouse_click.connect(connection_click)
+				n_connection.set_data(i,connection_data)
+				container.add_child(n_connection)
+			else:
+				var n_space = space.instantiate() as ConnectionSpace
+				n_space.set_direction(i)
+				container.add_child(n_space)

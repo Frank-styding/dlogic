@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://diq040gw1tgs7"]
+
+[ext_resource type="Script" path="res://Components/Gate/Space.gd" id="1_p2tet"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wned2"]
+bg_color = Color(0.984314, 0.317647, 0.529412, 0)
+
+[node name="Space" type="Panel"]
+custom_minimum_size = Vector2(51, 25)
+anchors_preset = -1
+anchor_left = -0.026
+anchor_top = 0.005
+anchor_right = -0.026
+anchor_bottom = 0.005
+offset_left = 5.452
+offset_top = -10.74
+offset_right = 56.452
+offset_bottom = 14.26
+pivot_offset = Vector2(7.5, 24.5)
+theme_override_styles/panel = SubResource("StyleBoxFlat_wned2")
+script = ExtResource("1_p2tet")
+real_size = Vector2(51, 25)

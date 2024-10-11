@@ -31,10 +31,6 @@ func create_tiles():
 			add_child(tile)
 				
 	
-	#box = StyleBoxFlat.new()
-	#box.set_corner_radius_all(5)
-	#box.bg_color = GridData.background_color
-
 func fix_to_grid_size(size):
 	return Vector2i(floor(size / GridData.cell_size))
 	
@@ -60,22 +56,6 @@ func update_grid_pos(pos):
 		position.y += grid_view_area.y
 	if diff.y  < -grid_view_area.y/2:
 		position.y += -grid_view_area.y
-		
-#func _draw():
-	#print("drwa")
-	#draw_rect(Rect2(-grid_size/2,grid_size),GridData.line_color)
-	#var pos = Vector2(grid_size) / 2
-	#var border_pos = Vector2(1,1) * GridData.line_width
-	#var cell_size = Vector2(1,1) * GridData.cell_size
-	#for x in grid_dim.x:
-		#for y in grid_dim.y:
-			#var rect = Rect2(
-					#-pos + border_pos +
-					#Vector2(x,y) * GridData.cell_size,
-					#cell_size - border_pos * 2
-			#)
-			#draw_style_box(box,rect)
-
 func _on_camera_update(_zoom, pos):
 	update_grid_pos(pos)
 
