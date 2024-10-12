@@ -16,8 +16,8 @@ extends Panel
 @onready var right_container = $RightMargin/RightContainer as Container
 
 
-@onready var connection = preload("res://Components/Gate/Connection.tscn") #panel
-@onready var space = preload("res://Components/Gate/Space.tscn") #panel
+@onready var connectionInst = preload("res://Components/Gate/Connection.tscn") #panel
+@onready var spaceInst = preload("res://Components/Gate/Space.tscn") #panel
 
 
 @export var connection_width: int = 49:
@@ -92,11 +92,11 @@ func create_connections(data:Dictionary):
 		for connection_data in data[i]:
 			var container = get_container(i)
 			if connection_data.has("name"):
-				var n_connection = connection.instantiate() as GateConnection
+				var n_connection = connectionInst.instantiate() as GateConnection
 				n_connection.mouse_click.connect(connection_click)
 				n_connection.set_data(i,connection_data)
 				container.add_child(n_connection)
 			else:
-				var n_space = space.instantiate() as ConnectionSpace
+				var n_space = spaceInst.instantiate() as ConnectionSpace
 				n_space.set_direction(i)
 				container.add_child(n_space)

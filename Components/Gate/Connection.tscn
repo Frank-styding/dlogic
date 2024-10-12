@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Components/Gate/Connection.gd" id="1_3c6xe"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ubds6"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0x5rp"]
 bg_color = Color(0.606419, 0.28215, 0.585482, 1)
 corner_radius_top_left = 6
 corner_radius_top_right = 6
@@ -21,7 +21,7 @@ offset_top = -10.74
 offset_right = 56.452
 offset_bottom = 14.26
 pivot_offset = Vector2(7.5, 24.5)
-theme_override_styles/panel = SubResource("StyleBoxFlat_ubds6")
+theme_override_styles/panel = SubResource("StyleBoxFlat_0x5rp")
 script = ExtResource("1_3c6xe")
 color = Color(0.606419, 0.28215, 0.585482, 1)
 border_radius = 6

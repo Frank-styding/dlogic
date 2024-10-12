@@ -42,8 +42,7 @@ func _ready():
 	if data:
 		set_connection_name(data["name"])
 		rotate_for_position(direction)
-	else:
-		visible = false
+
 
 func set_connection_name(_name:String):
 	if label == null:

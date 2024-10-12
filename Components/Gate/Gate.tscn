@@ -90,7 +90,7 @@ theme_override_constants/margin_top = 24
 layout_mode = 2
 theme_override_constants/separation = 49
 
-[connection signal="mouse_entered" from="RightMargin/RightContainer/Connection" to="RightMargin/RightContainer/Connection" method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="RightMargin/RightContainer/Connection" to="RightMargin/RightContainer/Connection" method="_on_mouse_exited"]
-[connection signal="mouse_entered" from="RightMargin/RightContainer/@Panel@109593" to="RightMargin/RightContainer/@Panel@109593" method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="RightMargin/RightContainer/@Panel@109593" to="RightMargin/RightContainer/@Panel@109593" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="BottomMargin/BottomContainer/Connection" to="BottomMargin/BottomContainer/Connection" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="BottomMargin/BottomContainer/Connection" to="BottomMargin/BottomContainer/Connection" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="BottomMargin/BottomContainer/@Panel@42816" to="BottomMargin/BottomContainer/@Panel@42816" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="BottomMargin/BottomContainer/@Panel@42816" to="BottomMargin/BottomContainer/@Panel@42816" method="_on_mouse_exited"]

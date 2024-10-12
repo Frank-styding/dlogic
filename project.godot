@@ -18,11 +18,17 @@ config/icon="res://icon.svg"
 [autoload]
 
 GridData="*res://GridData.gd"
+AntialiasedLine2DTexture="*res://addons/antialiased_line2d/texture.gd"
 
 [dotnet]
 
 project/assembly_name="dlogic"
 
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/antialiased_line2d/plugin.cfg")
+
 [rendering]
 
+renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
