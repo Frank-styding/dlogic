@@ -74,7 +74,9 @@ func from_data(data:Dictionary):
 func set_dimention(n_dimention:Vector2i):
 	set_size(n_dimention * GridData.cell_size)
 	dimention = n_dimention
-	for child in top_container.get_children() + bottom_container.get_children() + left_container.get_children() + right_container.get_children():
+	# Delete childs
+	var connections = top_container.get_children() + bottom_container.get_children() + left_container.get_children() + right_container.get_children()
+	for child in connections:
 		child.queue_free()
 
 func get_container(_position:int):

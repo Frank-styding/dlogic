@@ -92,5 +92,5 @@ theme_override_constants/separation = 49
 
 [connection signal="mouse_entered" from="BottomMargin/BottomContainer/Connection" to="BottomMargin/BottomContainer/Connection" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="BottomMargin/BottomContainer/Connection" to="BottomMargin/BottomContainer/Connection" method="_on_mouse_exited"]
-[connection signal="mouse_entered" from="BottomMargin/BottomContainer/@Panel@42816" to="BottomMargin/BottomContainer/@Panel@42816" method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="BottomMargin/BottomContainer/@Panel@42816" to="BottomMargin/BottomContainer/@Panel@42816" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="BottomMargin/BottomContainer/@Panel@34159" to="BottomMargin/BottomContainer/@Panel@34159" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="BottomMargin/BottomContainer/@Panel@34159" to="BottomMargin/BottomContainer/@Panel@34159" method="_on_mouse_exited"]
